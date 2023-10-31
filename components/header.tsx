@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Search, Bell, User } from "lucide-react";
 import AccountMenu from "./ui/account-menu";
 
+import Image from "next/image";
 const TOP_OFFSET = 70;
 
 const Header = () => {
@@ -42,10 +43,16 @@ const Header = () => {
                 className={`
                 px-4 md:px-16 py-6 flex items-center 
                 transition duration-400 
-               ${headerEffect ? "bg-zinc-900/90" : ""}
+               ${headerEffect ? "bg-black rounded-b-3xl" : ""}
             `}
             >
-                <img src="./images/logo.png" className="h-5 md:h-8 mr-12" />
+                <Image
+                    src="/images/logo.png"
+                    height={20}
+                    width={130}
+                    className="mr-4 md:mr-8"
+                    alt="logo"
+                />
                 {/* For Desktop screens */}
                 <nav className="flex-row ml-8 gap-6 hidden lg:flex">
                     <NavbarItem label="Home" />

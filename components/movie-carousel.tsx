@@ -1,14 +1,14 @@
+"use client";
+
+import { Movie } from "@prisma/client";
+import MovieCard from "./ui/movie-card";
+
 interface MovieCarouselProps {
-    data: Record<string, any>[];
+    data: Movie[];
     title: string;
 }
 
 const MovieCarousel: React.FC<MovieCarouselProps> = ({ data, title }) => {
-    // if (!data) {
-    //     return null;
-    // }
-    console.log(data);
-
     return (
         <div className="px-4 md:px-12 mt-4 space-y-8 ">
             <div className="">
@@ -16,9 +16,8 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ data, title }) => {
                     {title || ""}
                 </p>
                 <div className="grid grid-cols-4 gap-2">
-                    {data?.map((movie) => (
-                        <div key={movie.id}></div>
-                    ))}
+                    {data.length > 0 &&
+                        data?.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
                 </div>
             </div>
         </div>

@@ -1,3 +1,6 @@
+"use client";
+
+import { useSession } from "next-auth/react";
 import useSWR, { Fetcher } from "swr";
 import axios from "axios";
 import { headers } from "next/headers";

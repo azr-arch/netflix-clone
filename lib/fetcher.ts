@@ -6,6 +6,7 @@ const fetcher = async (url: string) => {
         const res = await fetch(`${process.env.BASE_API_ROUTE}${url}`, {
             headers: NextHeader(),
         });
+
         return res.json();
     } catch (error) {
         console.log("[FETCHER]", error);

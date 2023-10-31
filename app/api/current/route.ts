@@ -20,7 +20,6 @@ export async function GET(req: NextRequest) {
                 image: true,
                 id: true,
             },
-            // how can i limit properties here to get from db like i dont need password and few other properties from db
         });
         if (!currentUser) {
             return NextResponse.redirect("/auth", { status: 404 });
