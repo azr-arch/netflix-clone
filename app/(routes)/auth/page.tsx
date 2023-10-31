@@ -4,8 +4,7 @@ import { useState, useCallback, ChangeEvent } from "react";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { signIn } from "next-auth/react";
-import { compareSync } from "bcrypt";
-
+import Image from "next/image";
 const AuthPage = () => {
     const [emailInput, setEmailInput] = useState("");
     const [usernameInput, setUsernameInput] = useState("");
@@ -48,7 +47,13 @@ const AuthPage = () => {
         <div className="relative w-full h-full bg-[url('/images/hero.jpg')] bg-center bg-no-repeat bg-fixed bg-cover">
             <div className="bg-black w-full h-full lg:bg-opacity-50">
                 <nav className="px-12 py-5">
-                    <img src="/images/logo.png" alt="Logo" className="h-8  md:h-12" />
+                    <Image
+                        src="/images/logo.png"
+                        alt="Logo"
+                        style={{ width: "auto", height: "auto" }}
+                        width={120}
+                        height={30}
+                    />
                 </nav>
 
                 <div className="flex justify-center flex-col">

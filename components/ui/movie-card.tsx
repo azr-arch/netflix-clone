@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MoreHorizontal, Play } from "lucide-react";
 import FavoriteButton from "./favorite-button";
 import useInfoModal from "@/hooks/use-modal";
+import Image from "next/image";
 
 interface MovieCardProps {
     movie: Movie | null;
@@ -16,8 +17,8 @@ const MovieCard = ({ movie }: MovieCardProps) => {
 
     return (
         <div className="group bg-zinc-900 col-span relative h-[14vw] rounded-md">
-            <img
-                src={movie?.thumbnailUrl}
+            <Image
+                src={movie?.thumbnailUrl || ""}
                 className="
                 w-full h-[14vw] object-cover
                 cursor-pointer shadow-xl rounded-md
@@ -26,6 +27,8 @@ const MovieCard = ({ movie }: MovieCardProps) => {
                 transition
                  "
                 alt="Thumbnail"
+                fill
+                sizes="100% 14vw"
             />
             <div
                 className="
@@ -45,13 +48,16 @@ const MovieCard = ({ movie }: MovieCardProps) => {
                     group-hover:opacity-100
                      "
             >
-                <img
-                    src={movie?.thumbnailUrl}
-                    className="h-[12vw] w-full object-cover cursor-pointer transition shadow-xl rounded-t-md"
+                <Image
+                    src={movie?.thumbnailUrl || ""}
+                    className="h-[12vw] w-full object-cover  cursor-pointer transition shadow-xl rounded-t-md"
                     alt="Thumbnail"
+                    height={200}
+                    width={200}
+                    sizes="(min-width: 100px) 100vw, 12vw"
                 />
                 <div className="grow flex bg-card gap-1 flex-col items-start p-2 lg:p-4  text-black  rounded-b-md shadow-md">
-                    <div className="w-full flex items-center mb-1 gap-3 text-card-foreground transition">
+                    <div className="w-full flex items-center  gap-3 text-card-foreground transition">
                         <Link href={`/watch/${movie?.id}`}>
                             <Play
                                 aria-label="Play"
